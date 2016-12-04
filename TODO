@@ -1,0 +1,47 @@
+Datenstrukturen:
+
+State (veränderliche Werte):
+tempeature, velocityX, velocityY -> wird pro Voxel in einer 3D-Textur als mit 32Bit Genauigkeit gespeichert
+
+Material (konstante Werte):
+red, green, blue, alpha, specificHeat, conductivity, density, fluidity, externalHeatGeneration -> pro Material hintereinander in einen SSBO und dann eine 3D-Textur mit 8Bit Genauigkeit für das Speichern der Indices
+
+Global variables:
+windX, windY, thermalExpansionCoefficient, gravity... -> SSBO
+
+FluidSolver
+if(thermalExpansionCoefficient != 0)
+	applyBuoyancy(v); // Auftrieb
+if(viscosity > 0) // Zähflüssigkeit
+	diffuse(horizontal, uOld, u) // Diffusion
+	diffuse(vertical, vOld, v) // Diffusion
+	conserve(u, v, uOld, vOld) // Conservation of mass
+advect(horizontal, uOld, u) // Advection
+advect(vertical, vOld, v) // Advection
+conserve(u, v, uOld, vOld) // Conservation of mass
+
+applyBuoyancy(v)
+float g = gravity * timeStep;
+float b = thermalExpansionCoefficient * timeStep;
+float avgTemperature = averageTemperature(t);
+for each voxel
+  if fluid
+    f[i][j][k] = (g-b) * t[i][j][k] + b * avgTemperature
+    
+diffuse(direction, oldValues, values)
+copy new values in old values
+float hx = timeStep * viscosity * (1f / (deltaX * deltaX));
+float hy = timeStep * viscosity * (1f / (deltaY * deltaY));
+float dn = 1f / (1 + 2 * (hx + hy));
+for relaxation steps over all voxel
+	if fluid
+	  f[i][j] = (f0[i][j] + hx * (f[i - 1][j] + f[i + 1][j]) + hy * (f[i][j - 1] + f[i][j + 1])) * dn;
+	applyBoundary(direction, values)
+
+conserve(u, v, oldU, oldV)
+...
+
+advect(direction, oldValues, values)
+	copy new values in old values
+  macCormack...
+  ...
