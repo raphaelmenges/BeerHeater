@@ -4,8 +4,21 @@ Simulation of heating beer (__physically based!__) and other less interesting te
 Project about simulating air flow and heat distribution for course *Animation and Simulation* at University of Koblenz in summer terms 2015. Written by Nils Höhner and Raphael Menges in C++ and modern OpenGL. Simulation is implemented as highly parallel compute shader execution. The process is physically based but (by far) not correct.
 
 ## Screenshots
+Following screenshots were taken in application! Only text has been added in photo editing.
+
+### Beer Heating Simulation
 ![Screenshot-Beer](media/Screenshot-Beer_title.png)
+
+### Cooper Cooler Simulation
 ![Screenshot-Cooler](media/Screenshot-Cooler_title.png)
+
+## Features
+* Five __unqiue__ test setups
+* Sensors for measuring temperature
+* Fans for producing air flow
+* __GPU accelerated physically based simulation__
+* __High-quality__ raycasting volume rendering
+* Very minimal user interface for __distraction free user experience__
 
 ## HowTo
 Clone the repository to your local machine. Dependencies are included. Build project for the IDE of your choice with CMake. Tested with Visual Studio 2015 and GCC under Ubuntu 16.04.
