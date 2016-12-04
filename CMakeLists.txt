@@ -12,11 +12,11 @@ include_directories(.)
 
 # Collect files
 file(GLOB SOURCES
-	"*.cpp"
-	"*.c")
+	"src/*.cpp"
+	"src/*.c")
 
 file(GLOB HEADERS
-	"*.h")
+	"src/*.h")
 
 # Directory of externals code
 set(EXTERNAL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/externals)
