@@ -1,7 +1,7 @@
 # BeerHeater
 Simulation of heating beer (__physically based!__) and other less interesting test setups.
 
-Project about simulating air flow and heat distribution for course *Animation and Simulation* at University of Koblenz in summer terms 2015. Written by Nils Höhner and Raphael Menges in C++ and modern OpenGL. Simulation is implemented as highly parallel compute shader execution. The process is physically based but (by far) not correct.
+Project about simulating air flow and heat distribution for course *Animation and Simulation* at University of Koblenz in summer terms 2015. Written by [Nils Höhner](https://github.com/nhoehner) and Raphael Menges in C++ and modern OpenGL. Simulation is implemented as highly parallel compute shader execution. The process is physically based but (by far) not correct.
 
 ## Screenshots
 Following screenshots were taken in application! Only text has been added in photo editing.
